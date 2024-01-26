@@ -3,4 +3,5 @@
 .local
 .npm
 .ipython
+__pycache__
 *.ipynb
