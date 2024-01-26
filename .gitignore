@@ -1,0 +1,6 @@
+.idea
+.jupyter
+.local
+.npm
+.ipython
+*.ipynb
