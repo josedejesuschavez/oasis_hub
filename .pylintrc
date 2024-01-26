@@ -1,0 +1,3 @@
+[MESSAGES CONTROL]
+# Omitir el código de error C0301 (long lines)
+disable=C0114,E0401,C0116
