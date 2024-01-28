@@ -32,3 +32,7 @@ services:
       - ./src:/home/jovyan
     environment:
       - JUPYTER_TOKEN=mi_token_secreto
+  redis:
+    image: redis:7.2.4
+    ports:
+      - "6379:6379"
