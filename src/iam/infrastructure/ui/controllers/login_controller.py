@@ -9,5 +9,5 @@ templates = Jinja2Templates(directory="templates")
 @router.get("/", response_class=HTMLResponse)
 async def read_users(request: Request):
     return templates.TemplateResponse(
-        request=request, name="iam/login.html", context={"id": id}
+        request=request, name="iam/login.html", context={}
     )

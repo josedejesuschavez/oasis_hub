@@ -21,6 +21,10 @@
           </label>
         </div>
         <div class="form-control mt-6">
+          <button hx-post="/clicked" hx-target="#result" hx-swap="outerHTML">
+            Click Me
+          </button>
+          <div id="result"></div>
           <button class="btn btn-primary">Login</button>
         </div>
       </form>
