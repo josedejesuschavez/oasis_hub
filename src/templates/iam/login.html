@@ -4,28 +4,24 @@
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <form class="card-body">
+      <form id="login-form" class="card-body" hx-post="/login" hx-target="#notifications" hx-swap="afterbegin">
         <div class="form-control">
           <label class="label">
             <span class="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" class="input input-bordered" required />
+          <input type="email" name="username" placeholder="email" class="input input-bordered" required />
         </div>
         <div class="form-control">
           <label class="label">
             <span class="label-text">Password</span>
           </label>
-          <input type="password" placeholder="password" class="input input-bordered" required />
+          <input type="password" name="password" placeholder="password" class="input input-bordered" required />
           <label class="label">
             <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
           </label>
         </div>
         <div class="form-control mt-6">
-          <button hx-post="/clicked" hx-target="#result" hx-swap="outerHTML">
-            Click Me
-          </button>
-          <div id="result"></div>
-          <button class="btn btn-primary">Login</button>
+          <button type="submit" class="btn btn-primary">Login</button>
         </div>
       </form>
     </div>
@@ -35,4 +31,19 @@
     </div>
   </div>
 </div>
+<script>
+  /*document.getElementById('login-form').addEventListener('htmx:afterRequest', function(event) {
+    debugger
+    const successful = event.detail.successful;
+    const response = event.detail.xhr.response;
+    debugger;
+    if (successful == false) {
+      debugger
+      const responseJson = JSON.parse(response);
+      debugger;
+      // Capturar y manejar el código de estado 404 aquí
+      console.log('La página no fue encontrada (404)');
+    }
+  });*/
+</script>
 {% endblock content %}

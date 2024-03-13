@@ -9,8 +9,12 @@
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
 </head>
 <body>
+    <div id="notifications">
+    </div>
+
     <div id="content">{% block content %}{% endblock content %}</div>
     <footer class="footer p-10 bg-neutral text-neutral-content">
       <aside>

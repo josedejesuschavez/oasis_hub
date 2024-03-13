@@ -1,62 +1,30 @@
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.responses import HTMLResponse
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from jose import JWTError, jwt
+from fastapi.security import OAuth2PasswordRequestForm
 from iam.infrastructure.ui.router import iam_router
 
 
 app = FastAPI()
 
-SECRET_KEY = "mysecretkey"
-ALGORITHM = "HS256"
 
-
-def create_jwt_token(data: dict):
-    return jwt.encode(data, SECRET_KEY, algorithm=ALGORITHM)
-
-
-def decode_jwt_token(token: str):
-    return jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-
-
-def get_current_user(token: str = Depends(OAuth2PasswordBearer(tokenUrl="token"))):
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
-    try:
-        payload = decode_jwt_token(token)
-        username: str = payload.get("sub")
-        if username is None:
-            raise credentials_exception
-        token_data = {"sub": username}
-    except JWTError as exc:
-        raise credentials_exception from exc
-    return token_data
-
-
-@app.get("/protected")
-async def protected_route(current_user=Depends(get_current_user)):
-    return {"message": "This is a protected route", "username": current_user["sub"]}
-
-
-@app.post("/token")
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+@app.post("/login")
+async def login_post(form_data: OAuth2PasswordRequestForm = Depends()):
     user_dict = {"username": form_data.username, "password": form_data.password}
-    # Realizar la autenticación (simulada en este ejemplo)
-    if user_dict["username"] == "user" and user_dict["password"] == "password":
-        token_data = {"sub": form_data.username}
-        access_token = create_jwt_token(token_data)
-        return {"access_token": access_token, "token_type": "bearer"}
+    if (
+        user_dict["username"] == "user@correo.com"
+        and user_dict["password"] == "123qweQWE"
+    ):
+        return {"access_token": "sdfsdfsdf", "token_type": "bearer"}
 
-    raise HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Invalid credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
+    alert = """<div role="alert" class="alert alert-error" x-data="{ show: true }" x-show="show">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span>Error! Invalid credentials</span>
+                <button @click="show = false" class="close-btn">&times;</button>
+            </div>"""
+
+    return HTMLResponse(content=alert, status_code=200)
 
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
