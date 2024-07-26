@@ -4,6 +4,7 @@ from fastapi.templating import Jinja2Templates
 from starlette.responses import HTMLResponse
 from fastapi.security import OAuth2PasswordRequestForm
 from iam.infrastructure.ui.router import iam_router
+from ui_builder.infrastructure.ui.router import ui_builder_router
 
 
 app = FastAPI()
@@ -26,13 +27,10 @@ async def login_post(form_data: OAuth2PasswordRequestForm = Depends()):
 
     return HTMLResponse(content=alert, status_code=200)
 
-
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
 templates = Jinja2Templates(directory="templates")
 
 app.include_router(iam_router.router, prefix="/iam", tags=["iam"])
-
+app.include_router(ui_builder_router.router, prefix="/ui_builder", tags=["ui_builder"])
 
 @app.post("/clicked")
 async def read_users():

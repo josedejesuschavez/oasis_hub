@@ -7,5 +7,8 @@ class CreateTextInputUseCase:
 
     def execute(self, value: str = '', placeholder: str = '', type_input_text: str = TypeInputText.TEXT.value):
         return f"""
-        <input type="{type_input_text}" placeholder="{placeholder}" class="input w-full max-w-xs" value="{value}" />
+        <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="{type_input_text}" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
         """
