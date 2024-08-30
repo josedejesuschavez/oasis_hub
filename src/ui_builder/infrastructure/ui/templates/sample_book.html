@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="collapse bg-base-200">
+        <input type="radio" name="sample-book-input" checked="checked"/>
+        <div class="collapse-title text-xl font-medium">Data input</div>
+        <div class="collapse-content">
+            <input type="checkbox" checked="checked" class="checkbox"/>
+
+            <div class="form-control">
+                <label class="label cursor-pointer">
+                    <span class="label-text">Remember me</span>
+                    <input type="checkbox" checked="checked" class="checkbox"/>
+                </label>
+
+                <label class="label cursor-pointer">
+                    <span class="label-text">Remember me</span>
+                    <input type="checkbox" checked="checked" class="checkbox checkbox-primary"/>
+                </label>
+
+                <label class="cursor-pointer label">
+                    <span class="label-text">Remember me</span>
+                    <input type="checkbox" checked="checked" class="checkbox checkbox-secondary"/>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="collapse bg-base-200">
+        <input type="radio" name="sample-book-input"/>
+        <div class="collapse-title text-xl font-medium">Click to open this one and close others</div>
+        <div class="collapse-content">
+            <p>hello</p>
+        </div>
+    </div>
+
+{% endblock content %}

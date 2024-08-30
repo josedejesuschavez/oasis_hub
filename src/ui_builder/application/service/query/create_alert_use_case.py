@@ -5,11 +5,20 @@ class CreateAlertUseCase:
     def __init__(self):
         pass
 
-    def execute(self, message: str, icon: str, type_alert: str = TypeAlert.ALERT.value, stroke: str = 'stroke-info', is_closeable: bool = False):
+    def execute(
+        self,
+        message: str,
+        icon: str,
+        type_alert: str = TypeAlert.ALERT.value,
+        stroke: str = "stroke-info",
+        is_closeable: bool = False,
+    ):
         button_close_alert = ""
         htmx_attributes = ""
         if is_closeable:
-            button_close_alert = f"""<button @click="show = false" class="close-btn">&times;</button>"""
+            button_close_alert = (
+                f"""<button @click="show = false" class="close-btn">&times;</button>"""
+            )
             htmx_attributes = f"""x-data="{{ show: true }}" x-show="show" """
 
         return f"""
