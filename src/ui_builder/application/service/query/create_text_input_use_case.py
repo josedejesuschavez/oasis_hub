@@ -17,6 +17,6 @@ class CreateTextInputUseCase:
   <input
   type="{type_input_text}"
   class="form-control"
-  id="exampleFormControlInput1" placeholder="name@example.com">
+  id="exampleFormControlInput1" placeholder="{placeholder}" value="{value}" />
 </div>
         """

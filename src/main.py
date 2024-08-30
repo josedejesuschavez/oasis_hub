@@ -1,5 +1,4 @@
 from fastapi import Depends, FastAPI
-from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.responses import HTMLResponse
 from fastapi.security import OAuth2PasswordRequestForm

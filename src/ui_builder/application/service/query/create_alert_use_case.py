@@ -17,13 +17,14 @@ class CreateAlertUseCase:
         htmx_attributes = ""
         if is_closeable:
             button_close_alert = (
-                f"""<button @click="show = false" class="close-btn">&times;</button>"""
+                """<button @click="show = false" class="close-btn">&times;</button>"""
             )
-            htmx_attributes = f"""x-data="{{ show: true }}" x-show="show" """
+            htmx_attributes = """x-data="{{ show: true }}" x-show="show" """
 
         return f"""
         <div role="alert" class="{type_alert}" {htmx_attributes}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="{stroke} shrink-0 w-6 h-6">{icon}</svg>
+            <svg xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 24 24" class="{stroke} shrink-0 w-6 h-6">{icon}</svg>
             <span>{message}</span>
             {button_close_alert}
         </div>"""
