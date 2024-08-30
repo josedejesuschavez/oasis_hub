@@ -5,7 +5,6 @@ from fastapi.security import OAuth2PasswordRequestForm
 from iam.infrastructure.ui.router import iam_router
 from ui_builder.infrastructure.ui.router import ui_builder_router
 
-
 app = FastAPI()
 
 
