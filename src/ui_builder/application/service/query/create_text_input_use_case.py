@@ -1,22 +1,24 @@
-from ui_builder.domain.value_objects.enums import TypeInputText
+from enum import Enum
+
+from ui_builder.application.service.query.create_text_input_simple_use_case import CreateTextInputSimpleUseCase
+from ui_builder.application.service.query.create_text_input_with_icon_use_case import CreateTextInputWithIconUseCase
+from ui_builder.application.service.query.create_text_input_with_text_label_use_case import \
+    CreateTextInputWithTextLabelUseCase
+from ui_builder.domain.use_case import UseCase
 
 
-class CreateTextInputUseCase:
-    def __init__(self):
-        pass
+class TextInput(Enum):
+    SIMPLE = CreateTextInputSimpleUseCase
+    WITH_ICON = CreateTextInputWithIconUseCase
+    WITH_TEXT_LABEL = CreateTextInputWithTextLabelUseCase
 
-    def execute(
-        self,
-        value: str = "",
-        placeholder: str = "",
-        type_input_text: str = TypeInputText.TEXT.value,
-    ):
-        return f"""
-        <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input
-  type="{type_input_text}"
-  class="form-control"
-  id="exampleFormControlInput1" placeholder="{placeholder}" value="{value}" />
-</div>
+
+class CreateTextInputUseCase(UseCase):
+
+    def __init__(self, text_input_type):
+        self.text_input_type = text_input_type
+
+    def execute(self) -> str:
+
+        return """
         """

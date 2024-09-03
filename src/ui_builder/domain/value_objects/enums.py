@@ -1,5 +1,9 @@
 from enum import Enum
 
+#from ui_builder.application.service.query.create_text_input_simple_use_case import CreateTextInputSimpleUseCase
+#from ui_builder.application.service.query.create_text_input_with_icon_use_case import CreateTextInputWithIconUseCase
+#from ui_builder.application.service.query.create_text_input_with_text_label_use_case import CreateTextInputWithTextLabelUseCase
+
 
 class TypeAlert(Enum):
     ALERT = "alert"
@@ -38,7 +42,29 @@ class Stroke(Enum):
     CURRENT = "stroke-current"
 
 
-class TypeInputText(Enum):
+class TypeTextInput(Enum):
     TEXT = "text"
     PASSWORD = "password"
     EMAIL = "email"
+
+class TypeInputColor(Enum):
+    DEFAULT = ''
+    PRIMARY = 'input-primary'
+    SECONDARY = 'input-secondary'
+    ACCENT = 'input-accent'
+    INFO = 'input-info'
+    SUCCESS = 'input-success'
+    WARNING = 'input-warning'
+    ERROR = 'input-error'
+
+class TypeInputSize(Enum):
+    DEFAULT = ''
+    XS = 'input-xs'
+    SM = 'input-sm'
+    MD = 'input-md'
+    LG = 'input-lg'
+
+class TypeInputIconPosition(Enum):
+    NONE = 'none'
+    RIGHT = 'right'
+    LEFT = 'left'
