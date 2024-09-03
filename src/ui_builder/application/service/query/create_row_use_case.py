@@ -15,7 +15,7 @@ class CreateRowUseCase(UseCase):
             content = content + row
 
         return f"""
-        <div class="grid grid-cols-{self.cols} gap-4">
+        <div class="grid grid-cols-{self.cols} gap-4 p-2">
         {content}
         </div>
         """
