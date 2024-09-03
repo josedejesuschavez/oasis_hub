@@ -4,7 +4,7 @@ from ui_builder.domain.use_case import UseCase
 
 
 class CreateRowUseCase(UseCase):
-    def __init__(self, cols: int, columns: List[str]):
+    def __init__(self, cols: int, columns: List[UseCase]):
         self.cols = cols
         self.columns = columns
 
@@ -12,7 +12,7 @@ class CreateRowUseCase(UseCase):
         content = ''
 
         for row in self.columns:
-            content = content + row
+            content = content + row.execute()
 
         return f"""
         <div class="grid grid-cols-{self.cols} gap-4 p-2">
